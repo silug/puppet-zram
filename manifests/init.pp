@@ -1,46 +1,33 @@
 # Class: zram
 # ===========================
 #
-# Full description of class zram here.
+# This module configures zram using udev rules (no init scripts or systemd units
+# needed).
 #
 # Parameters
 # ----------
 #
-# Document parameters here.
+# * `numdevices`
+# Number of zram devices.  Defaults to the number of processors
+# ($::processorcount).
 #
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
-#
-# Variables
-# ----------
-#
-# Here you should define a list of variables that this module would require.
-#
-# * `sample variable`
-#  Explanation of how this variable affects the function of this class and if
-#  it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#  External Node Classifier as a comma separated list of hostnames." (Note,
-#  global variables should be avoided in favor of class parameters as
-#  of Puppet 2.6.)
+# * `disksize`
+# Size of zram devices.  Defaults to half of memory divided by numdevices.
 #
 # Examples
 # --------
 #
-# @example
-#    class { 'zram':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#    }
+#    class { 'zram': }
 #
 # Authors
 # -------
 #
-# Author Name <author@domain.com>
+# Steven Pritchard <steven.pritchard@gmail.com>
 #
 # Copyright
 # ---------
 #
-# Copyright 2016 Your name here, unless otherwise noted.
+# Copyright 2016 Steven Pritchard
 #
 class zram (
   $numdevices=$::processorcount,

@@ -15,65 +15,55 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This module configures zram swap using udev rules (no init scripts or systemd
+units needed).
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+Want to know more about zram?  Read the
+[Linux kernel documentation](https://www.kernel.org/doc/Documentation/blockdev/zram.txt).
 
 ## Setup
 
 ### What zram affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+Creates the following files:
 
-### Setup Requirements **OPTIONAL**
+* /lib/udev/zram
+* /etc/udev/rules.d/01-zram.rules
+* /etc/modprobe.d/zram.conf
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+Finally, it loads the zram module.
+
+### Setup Requirements
+
+This module requires [puppetlabs-stdlib](https://forge.puppet.com/puppetlabs/stdlib)
+and [camptocamp-kmod](https://forge.puppet.com/camptocamp/kmod).
 
 ### Beginning with zram
 
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+Make sure you are using a kernel that includes the zram module.
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+    class { 'zram': }
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+This module accepts the following parameters:
+
+* `numdevices`
+Number of zram devices.  Defaults to the number of processors
+($::processorcount).
+
+* `disksize`
+Size of zram devices.  Defaults to half of memory divided by numdevices.
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+This module has been tested on Ubuntu 16.04.  It does have a dependency on a
+systemd helper (systemd-run).
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+Send me a pull request on GitHub.
