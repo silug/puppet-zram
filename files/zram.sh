@@ -24,5 +24,9 @@ if [ "$ACTION" = add ] ; then
         exit 6
     fi
 
-    ( sleep 1 ; /sbin/mkswap "$DEVNAME" && /sbin/swapon -p 32767 "$DEVNAME" ) &
+    if type -path systemd-run > /dev/null ; then
+        systemd-run /bin/bash -c "sleep 1 ; /sbin/mkswap $DEVNAME && /sbin/swapon -p 32767 $DEVNAME" || exit 7
+    else
+        ( sleep 1 ; /sbin/mkswap "$DEVNAME" && /sbin/swapon -p 32767 "$DEVNAME" ) &
+    fi
 fi
