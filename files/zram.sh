@@ -15,7 +15,7 @@ fi
 if [ "$ACTION" = add ] ; then
     if [ "$disksize" -gt 0 ] ; then
         echo "$disksize" > /sys"$DEVPATH"/disksize || exit 4
-        if [ "$( /sbin/blockdev --getsz "$DEVNAME" )" -lt "$[ $disksize / 512 ]" ] ; then
+        if [ "$( cat /sys"$DEVPATH"/disksize )" -lt "$disksize" ] ; then
             echo "Setting size failed.  Exiting." >&2
             exit 5
         fi
