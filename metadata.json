@@ -1,14 +1,15 @@
 {
   "name": "sjp-zram",
-  "version": "0.1.0",
-  "author": "sjp",
-  "summary": null,
+  "version": "0.1.1",
+  "author": "Steven Pritchard",
+  "summary": "Configures and loads zram kernel module",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "https://github.com/silug/puppet-zram.git",
+  "project_page": "https://github.com/silug/puppet-zram",
+  "issues_url": "https://github.com/silug/puppet-zram/issues",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {"name":"puppetlabs-stdlib","version_requirement":">= 4.9.1"},
+    {"name":"camptocamp-kmod","version_requirement":">= 2.1.0"}
   ]
 }
 
