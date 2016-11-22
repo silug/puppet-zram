@@ -61,8 +61,7 @@ Size of zram devices.  Defaults to half of memory divided by numdevices.
 
 ## Limitations
 
-This module has been tested on Ubuntu 16.04.  It does have a dependency on a
-systemd helper (systemd-run).
+This module has been tested on Ubuntu 16.04 and Debian Jessie (Raspbian).
 
 ## Development
 

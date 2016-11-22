@@ -1,8 +1,8 @@
 # Class: zram
 # ===========================
 #
-# This module configures zram using udev rules (no init scripts or systemd units
-# needed).
+# This module configures zram using udev rules (no init scripts or systemd
+# units needed).
 #
 # Parameters
 # ----------
