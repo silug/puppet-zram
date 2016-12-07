@@ -1,6 +1,6 @@
 {
-  "name": "sjp-zram",
-  "version": "0.1.2",
+  "name": "silug-zram",
+  "version": "0.2.0",
   "author": "Steven Pritchard",
   "summary": "Configures and loads zram kernel module",
   "license": "Apache-2.0",
