@@ -5,7 +5,7 @@ describe 'zram' do
     let(:facts) {{
       :processorcount => '4',
       :memorysize_mb  => '4096',
-      :augeasversion  => '1.4.0,
+      :augeasversion  => '1.4.0',
     }}
     it { is_expected.to compile }
     it { is_expected.to contain_class('zram') }
