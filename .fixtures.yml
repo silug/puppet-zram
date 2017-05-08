@@ -1,6 +1,6 @@
 fixtures:
-  repositories:
-    stdlib:
-      repo: git://github.com/puppetlabs/puppetlabs-stdlib.git
+  forge_modules:
+    stdlib: 'puppetlabs/stdlib'
+    kmod: 'camptocamp/kmod'
   symlinks:
     zram: "#{source_dir}"
