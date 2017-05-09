@@ -6,5 +6,7 @@ HOSTS:
       - default
     hypervisor: vagrant_libvirt
     box: fedora/24-cloud-base
+    ip: '172.31.255.24'
+    netmask: '255.255.255.128'
 CONFIG:
   type: foss
