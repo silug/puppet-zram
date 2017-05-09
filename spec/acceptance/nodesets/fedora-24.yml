@@ -1,0 +1,10 @@
+HOSTS:
+  fedora-24-x64:
+    platform: fedora-24-x86_64
+    roles:
+      - agent
+      - default
+    hypervisor: vagrant
+    box: fedora/24-cloud-base
+CONFIG:
+  type: foss
