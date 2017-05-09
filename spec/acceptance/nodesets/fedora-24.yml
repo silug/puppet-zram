@@ -4,7 +4,7 @@ HOSTS:
     roles:
       - agent
       - default
-    hypervisor: vagrant
+    hypervisor: vagrant_libvirt
     box: fedora/24-cloud-base
 CONFIG:
   type: foss

@@ -4,7 +4,7 @@ HOSTS:
     roles:
       - agent
       - default
-    hypervisor: vagrant
+    hypervisor: vagrant_libvirt
     box: centos/6
 CONFIG:
   type: foss
