@@ -1,0 +1,12 @@
+HOSTS:
+  debian-8-x64:
+    platform: debian-8-x86_64
+    roles:
+      - agent
+      - default
+    hypervisor: vagrant_libvirt
+    box: debian/jessie64
+    ip: '172.31.255.8'
+    netmask: '255.255.255.128'
+CONFIG:
+  type: foss
