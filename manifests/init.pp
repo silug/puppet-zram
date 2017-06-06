@@ -31,7 +31,13 @@
 #
 class zram (
   $numdevices=$::processorcount,
-  $disksize=(floor(($::memorysize_mb/2)*1048576/$numdevices))) {
+  $disksize=$undef ){
+  if $disksize == undef {
+    $real_disksize = floor(($::memorysize_mb/2)*1048576/$numdevices)
+  } else {
+    $real_disksize = $disksize
+  }
+
   file { '/lib/udev/zram':
     ensure => file,
     owner  => 'root',
