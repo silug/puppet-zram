@@ -1,51 +1,25 @@
-# Class: zram
-# ===========================
+# zram
 #
 # This module configures zram using udev rules (no init scripts or systemd
 # units needed).
 #
-# Parameters
-# ----------
+# @summary Configures and loads zram kernel module
 #
-# * `numdevices`
-# Number of zram devices.  Defaults to the number of processors
-# ($::processorcount).
+# @param numdevices Number of zram devices.  Defaults to the number of processors ($::processorcount).
 #
-# * `disksize`
-# Size of zram devices.  Defaults to half of memory divided by numdevices.
+# @param disksize Size of zram devices.  Defaults to half of memory divided by numdevices.
 #
-# Examples
-# --------
-#
+# @example
 #    class { 'zram': }
 #
-# Authors
-# -------
-#
-# Steven Pritchard <steven.pritchard@gmail.com>
-#
-# Copyright
-# ---------
-#
-# Copyright 2016 Steven Pritchard
+# @author Steven Pritchard <steven.pritchard@gmail.com>
 #
 class zram (
-  $numdevices=$::processorcount,
-  $disksize=(floor(($::memorysize_mb/2)*1048576/$numdevices))) {
-  file { '/lib/udev/zram':
-    ensure => file,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
-    source => 'puppet:///modules/zram/zram.sh',
-  } ->
-  file { '/etc/udev/rules.d/01-zram.rules':
-    ensure  => file,
-    content => template('zram/01-zram.rules.erb'),
-  } ->
-  kmod::option { 'zram':
-    option => 'num_devices',
-    value  => $numdevices,
-  } ->
-  kmod::load { 'zram': }
+  Integer $numdevices = $facts['processorcount'],
+  Integer $disksize   = (floor(($facts['memorysize_mb']/2)*1048576/$numdevices)),
+) {
+  contain zram::config
+  contain zram::load
+
+  Class['zram::config'] -> Class['zram::load']
 }

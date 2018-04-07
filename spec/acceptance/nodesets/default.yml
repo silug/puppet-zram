@@ -4,9 +4,55 @@ HOSTS:
     roles:
       - agent
       - default
-    hypervisor: vagrant_libvirt
+    hypervisor: vagrant
     box: centos/7
     ip: '172.31.255.7'
     netmask: '255.255.255.128'
+
+  centos-6-x64:
+    platform: el-6-x86_64
+    roles:
+      - agent
+    hypervisor: vagrant
+    box: centos/6
+    ip: '172.31.255.6'
+    netmask: '255.255.255.128'
+
+  debian-8-x64:
+    platform: debian-8-x86_64
+    roles:
+      - agent
+    hypervisor: vagrant
+    box: debian/jessie64
+    ip: '172.31.255.8'
+    netmask: '255.255.255.128'
+
+  fedora-25-x64:
+    platform: fedora-25-x86_64
+    roles:
+      - agent
+    hypervisor: vagrant
+    box: fedora/25-cloud-base
+    ip: '172.31.255.25'
+    netmask: '255.255.255.128'
+
+  fedora-26-x64:
+    platform: fedora-26-x86_64
+    roles:
+      - agent
+    hypervisor: vagrant
+    box: fedora/26-cloud-base
+    ip: '172.31.255.26'
+    netmask: '255.255.255.128'
+
+  fedora-27-x64:
+    platform: fedora-27-x86_64
+    roles:
+      - agent
+    hypervisor: vagrant
+    box: fedora/27-cloud-base
+    ip: '172.31.255.27'
+    netmask: '255.255.255.128'
+
 CONFIG:
   type: foss

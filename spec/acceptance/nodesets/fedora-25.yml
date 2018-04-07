@@ -4,7 +4,7 @@ HOSTS:
     roles:
       - agent
       - default
-    hypervisor: vagrant_libvirt
+    hypervisor: vagrant
     box: fedora/25-cloud-base
     ip: '172.31.255.25'
     netmask: '255.255.255.128'

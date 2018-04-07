@@ -1,0 +1,11 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": true,
+  "description": "Reloads the zram kernel module",
+  "parameters": {
+    "verbose": {
+      "description": "Enable verbose output",
+      "type": "Optional[Boolean]"
+    }
+  }
+}

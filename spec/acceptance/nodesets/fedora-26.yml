@@ -1,12 +1,12 @@
 HOSTS:
-  centos-6-x64:
-    platform: el-6-x86_64
+  fedora-26-x64:
+    platform: fedora-26-x86_64
     roles:
       - agent
       - default
     hypervisor: vagrant
-    box: centos/6
-    ip: '172.31.255.6'
+    box: fedora/26-cloud-base
+    ip: '172.31.255.26'
     netmask: '255.255.255.128'
 CONFIG:
   type: foss

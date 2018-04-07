@@ -1,0 +1,21 @@
+---
+Gemfile:
+  optional:
+    ':acceptance':
+      - gem: beaker
+      - gem: beaker-rspec
+      - gem: beaker-puppet_install_helper
+      - gem: beaker-module_install_helper
+      - gem: vagrant-wrapper
+.gitignore:
+  paths:
+    - /update_report.txt
+spec/spec_helper.rb:
+  spec_overrides: |-
+    # Add coverage report.
+    RSpec.configure do |c|
+      c.after(:suite) do
+        RSpec::Puppet::Coverage.report!
+      end
+    end
+
