@@ -1,3 +1,4 @@
+---
 HOSTS:
   fedora-25-x64:
     platform: fedora-25-x86_64

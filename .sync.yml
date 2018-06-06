@@ -18,4 +18,3 @@ spec/spec_helper.rb:
         RSpec::Puppet::Coverage.report!
       end
     end
-

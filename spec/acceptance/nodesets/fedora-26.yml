@@ -1,3 +1,4 @@
+---
 HOSTS:
   fedora-26-x64:
     platform: fedora-26-x86_64
