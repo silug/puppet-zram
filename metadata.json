@@ -1,6 +1,6 @@
 {
   "name": "silug-zram",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Steven Pritchard",
   "summary": "Configures and loads zram kernel module",
   "license": "Apache-2.0",
@@ -21,36 +21,40 @@
     {
       "operatingsystem": "Fedora",
       "operatingsystemrelease": [
-        "25",
-        "26",
-        "27"
+        "28",
+        "29",
+        "30"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "6",
-        "7"
+        "7",
+        "8"
       ]
     },
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "8"
+        "8",
+        "9",
+        "10"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "16.04",
-        "16.10"
+        "18.04"
       ]
     }
   ],
@@ -63,7 +67,7 @@
   "tags": [
     "zram"
   ],
-  "pdk-version": "1.10.0",
-  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git#1.10.0",
-  "template-ref": "1.10.0-0-gbba9ac3"
+  "pdk-version": "1.13.0",
+  "template-url": "pdk-default#1.13.0",
+  "template-ref": "1.13.0-0-g66e1443"
 }

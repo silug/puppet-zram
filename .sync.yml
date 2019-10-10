@@ -6,6 +6,7 @@ Gemfile:
       - gem: beaker-rspec
       - gem: beaker-puppet_install_helper
       - gem: beaker-module_install_helper
+      - gem: beaker-vagrant
       - gem: vagrant-wrapper
 .gitignore:
   paths:
