@@ -9,61 +9,6 @@ HOSTS:
     box: centos/7
     ip: '172.31.255.7'
     netmask: '255.255.255.128'
-
-  centos-6-x64:
-    platform: el-6-x86_64
-    roles:
-      - agent
-    hypervisor: vagrant
-    box: centos/6
-    ip: '172.31.255.6'
-    netmask: '255.255.255.128'
-
-  debian-8-x64:
-    platform: debian-8-x86_64
-    roles:
-      - agent
-    hypervisor: vagrant
-    box: debian/jessie64
-    ip: '172.31.255.8'
-    netmask: '255.255.255.128'
-
-  debian-9-x64:
-    platform: debian-9-x86_64
-    roles:
-      - agent
-    hypervisor: vagrant
-    box: debian/jessie64
-    ip: '172.31.255.9'
-    netmask: '255.255.255.128'
-
-  fedora-28-x64:
-    platform: fedora-28-x86_64
-    roles:
-      - agent
-    hypervisor: vagrant
-    box: fedora/28-cloud-base
-    ip: '172.31.255.28'
-    netmask: '255.255.255.128'
-
-  fedora-29-x64:
-    platform: fedora-29-x86_64
-    roles:
-      - agent
-    hypervisor: vagrant
-    box: fedora/29-cloud-base
-    ip: '172.31.255.29'
-    netmask: '255.255.255.128'
-
-  fedora-30-x64:
-    platform: fedora-30-x86_64
-    roles:
-      - agent
-    hypervisor: vagrant
-    box: fedora/30-cloud-base
-    ip: '172.31.255.30'
-    netmask: '255.255.255.128'
-
 CONFIG:
   type: aio
   puppet_collection: puppet6

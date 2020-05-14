@@ -4,9 +4,8 @@ HOSTS:
     platform: debian-9-x86_64
     roles:
       - agent
-      - default
     hypervisor: vagrant
-    box: debian/jessie64
+    box: debian/stretch64
     ip: '172.31.255.9'
     netmask: '255.255.255.128'
 CONFIG:

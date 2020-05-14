@@ -1,13 +1,12 @@
 ---
 HOSTS:
-  fedora-28-x64:
-    platform: fedora-28-x86_64
+  debian-10-x64:
+    platform: debian-10-x86_64
     roles:
       - agent
-      - default
     hypervisor: vagrant
-    box: fedora/28-cloud-base
-    ip: '172.31.255.28'
+    box: debian/buster64
+    ip: '172.31.255.10'
     netmask: '255.255.255.128'
 CONFIG:
   type: aio

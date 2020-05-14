@@ -1,12 +1,12 @@
 ---
 HOSTS:
-  centos-6-x64:
-    platform: el-6-x86_64
+  centos-8-x64:
+    platform: el-8-x86_64
     roles:
       - agent
     hypervisor: vagrant
-    box: centos/6
-    ip: '172.31.255.106'
+    box: centos/8
+    ip: '172.31.255.108'
     netmask: '255.255.255.128'
 CONFIG:
   type: aio

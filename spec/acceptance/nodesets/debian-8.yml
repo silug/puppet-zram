@@ -4,7 +4,6 @@ HOSTS:
     platform: debian-8-x86_64
     roles:
       - agent
-      - default
     hypervisor: vagrant
     box: debian/jessie64
     ip: '172.31.255.8'
