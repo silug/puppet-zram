@@ -19,3 +19,21 @@ spec/spec_helper.rb:
         RSpec::Puppet::Coverage.report!
       end
     end
+.gitlab-ci.yml:
+  custom:
+    # Due to bugs in the PDK template, the following:
+    # beaker:
+    #   variables: {}
+    # needs to be written like this:
+    custom_stages:
+      - beaker
+    custom_jobs:
+      beaker:
+        stage: beaker
+        variables:
+          DOCKER_DRIVER: 'overlay2'
+        services:
+          - docker:dind
+        script:
+          - bundle install --with system_tests
+          - bundle exec rake beaker
