@@ -3,5 +3,6 @@ fixtures:
   forge_modules:
     stdlib: 'puppetlabs/stdlib'
     kmod: 'camptocamp/kmod'
+    augeas_core: 'puppetlabs/augeas_core'
   symlinks:
     zram: "#{source_dir}"
