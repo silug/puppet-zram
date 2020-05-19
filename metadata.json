@@ -1,6 +1,6 @@
 {
   "name": "silug-zram",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Steven Pritchard",
   "summary": "Configures and loads zram kernel module",
   "license": "Apache-2.0",
@@ -15,6 +15,10 @@
     {
       "name": "camptocamp-kmod",
       "version_requirement": ">= 2.1.0 < 3.0.0"
+    },
+    {
+      "name": "puppetlabs-augeas_core",
+      "version_requirement": ">= 1.0.0 < 2.0.0"
     }
   ],
   "operatingsystem_support": [
