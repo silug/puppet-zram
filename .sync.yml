@@ -8,6 +8,8 @@ Gemfile:
       - gem: beaker-module_install_helper
       - gem: beaker-vagrant
       - gem: vagrant-wrapper
+      - gem: net-ssh
+        version: '~> 5.2'
 .gitignore:
   paths:
     - /update_report.txt

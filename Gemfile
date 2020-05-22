@@ -36,6 +36,7 @@ group :acceptance do
   gem "beaker-module_install_helper", require: false
   gem "beaker-vagrant",               require: false
   gem "vagrant-wrapper",              require: false
+  gem "net-ssh", '~> 5.2',            require: false
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
