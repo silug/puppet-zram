@@ -1,0 +1,13 @@
+---
+HOSTS:
+  ubuntu-18.04-x64:
+    platform: ubuntu-18.04-x86_64
+    roles:
+      - agent
+    hypervisor: vagrant
+    box: ubuntu/bionic64
+    ip: '172.31.255.18'
+    netmask: '255.255.255.128'
+CONFIG:
+  type: aio
+  puppet_collection: puppet6

@@ -10,5 +10,13 @@
 class zram::load {
   assert_private()
 
+  if $facts['os']['name'] == 'Ubuntu' {
+    # The zram module is in linux-modules-extra on Ubuntu.
+    package { "linux-modules-extra-${facts['kernelrelease']}":
+      ensure  => installed,
+      require => Kmod::Load['zram'],
+    }
+  }
+
   kmod::load { 'zram': }
 }
