@@ -1,0 +1,13 @@
+---
+HOSTS:
+  ubuntu-20.04-x64:
+    platform: ubuntu-20.04-x86_64
+    roles:
+      - agent
+    hypervisor: vagrant
+    box: ubuntu/focal64
+    ip: '172.31.255.20'
+    netmask: '255.255.255.128'
+CONFIG:
+  type: aio
+  puppet_collection: puppet6

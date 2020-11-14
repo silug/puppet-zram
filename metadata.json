@@ -1,6 +1,6 @@
 {
   "name": "silug-zram",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Steven Pritchard",
   "summary": "Configures and loads zram kernel module",
   "license": "Apache-2.0",
@@ -10,11 +10,15 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 4.9.1 < 5.0.0"
+      "version_requirement": ">= 4.25.0 < 7.0.0"
     },
     {
       "name": "camptocamp-kmod",
       "version_requirement": ">= 2.1.0 < 3.0.0"
+    },
+    {
+      "name": "puppetlabs-augeas_core",
+      "version_requirement": ">= 1.0.0 < 2.0.0"
     }
   ],
   "operatingsystem_support": [
@@ -22,7 +26,8 @@
       "operatingsystem": "Fedora",
       "operatingsystemrelease": [
         "30",
-        "31"
+        "31",
+        "32"
       ]
     },
     {
@@ -53,20 +58,21 @@
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "16.04",
-        "18.04"
+        "18.04",
+        "20.04"
       ]
     }
   ],
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.7.0 < 7.0.0"
+      "version_requirement": ">= 4.10.1 < 7.0.0"
     }
   ],
   "tags": [
     "zram"
   ],
-  "pdk-version": "1.17.0",
-  "template-url": "pdk-default#1.17.0",
-  "template-ref": "tags/1.17.0-0-gd3a4319"
+  "pdk-version": "1.18.1",
+  "template-url": "pdk-default#1.18.1",
+  "template-ref": "tags/1.18.1-0-g3d2e75c"
 }

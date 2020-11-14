@@ -8,6 +8,8 @@ Gemfile:
       - gem: beaker-module_install_helper
       - gem: beaker-vagrant
       - gem: vagrant-wrapper
+      - gem: net-ssh
+        version: '~> 5.2'
 .gitignore:
   paths:
     - /update_report.txt
@@ -21,9 +23,18 @@ spec/spec_helper.rb:
     end
 .gitlab-ci.yml:
   custom:
+    ruby_versions:
+      2.5.7:
+        tags:
+          - docker
+      2.4.5:
+        tags:
+          - docker
     # Due to bugs in the PDK template, the following:
     # beaker:
     #   variables: {}
+    #   tags:
+    #     - beaker
     # needs to be written like this:
     custom_stages:
       - beaker
@@ -37,3 +48,5 @@ spec/spec_helper.rb:
         script:
           - bundle install --with system_tests
           - bundle exec rake beaker
+        tags:
+          - beaker
