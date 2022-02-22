@@ -6,8 +6,6 @@ HOSTS:
       - agent
     hypervisor: vagrant
     box: debian/stretch64
-    ip: '172.31.255.9'
-    netmask: '255.255.255.128'
 CONFIG:
   type: aio
   puppet_collection: puppet6

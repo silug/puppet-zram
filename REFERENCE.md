@@ -7,7 +7,7 @@
 ### Classes
 
 * [`zram`](#zram): Configures and loads zram kernel module
-* [`zram::config`](#zramconfig): Configuration for the zram module
+* [`zram::config`](#zramconfig): Configuration for the `zram` module
 * [`zram::load`](#zramload): Loads the zram kernel module
 
 ### Tasks
@@ -16,7 +16,7 @@
 
 ## Classes
 
-### `zram`
+### <a name="zram"></a>`zram`
 
 zram
 
@@ -33,30 +33,33 @@ class { 'zram': }
 
 #### Parameters
 
-The following parameters are available in the `zram` class.
+The following parameters are available in the `zram` class:
 
-##### `numdevices`
+* [`numdevices`](#numdevices)
+* [`disksize`](#disksize)
+
+##### <a name="numdevices"></a>`numdevices`
 
 Data type: `Integer`
 
-Number of zram devices.  Defaults to the number of processors ($::processorcount).
+Number of zram devices.  Defaults to the number of processors (`$facts['processorcount']`).
 
 Default value: `$facts['processorcount']`
 
-##### `disksize`
+##### <a name="disksize"></a>`disksize`
 
 Data type: `Integer`
 
-Size of zram devices.  Defaults to half of memory divided by numdevices.
+Size of zram devices.  Defaults to half of memory divided by `numdevices`.
 
 Default value: `(`
 
-### `zram::config`
+### <a name="zramconfig"></a>`zram::config`
 
 zram::config
 
-Configuration for the zram module.  This can
-only be called from the main zram class.
+Configuration for the `zram` module.  This can
+only be called from the main `zram` class.
 
 #### Examples
 
@@ -66,12 +69,12 @@ only be called from the main zram class.
 include zram::config
 ```
 
-### `zram::load`
+### <a name="zramload"></a>`zram::load`
 
 zram::load
 
 Loads the zram kernel module.  Intended
-to be called from the main zram class.
+to be called from the main `zram` class.
 
 #### Examples
 
@@ -83,7 +86,7 @@ include zram::load
 
 ## Tasks
 
-### `reload`
+### <a name="reload"></a>`reload`
 
 Reloads the zram kernel module
 

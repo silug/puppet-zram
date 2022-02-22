@@ -6,8 +6,6 @@ HOSTS:
       - agent
     hypervisor: vagrant
     box: centos/7
-    ip: '172.31.255.107'
-    netmask: '255.255.255.128'
 CONFIG:
   type: aio
-  puppet_collection: puppet6
+  puppet_collection: puppet7

@@ -2,16 +2,18 @@
 
 #### Table of Contents
 
-1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with zram](#setup)
-    * [What zram affects](#what-zram-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with zram](#beginning-with-zram)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+- [zram](#zram)
+      - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Module Description](#module-description)
+  - [Setup](#setup)
+    - [What zram affects](#what-zram-affects)
+    - [Setup Requirements](#setup-requirements)
+    - [Beginning with zram](#beginning-with-zram)
+  - [Usage](#usage)
+  - [Reference](#reference)
+  - [Limitations](#limitations)
+  - [Development](#development)
 
 ## Overview
 
@@ -38,7 +40,7 @@ Finally, it loads the zram module.
 ### Setup Requirements
 
 This module requires [puppetlabs-stdlib](https://forge.puppet.com/puppetlabs/stdlib)
-and [camptocamp-kmod](https://forge.puppet.com/camptocamp/kmod).
+and [puppet-kmod](https://forge.puppet.com/puppet/kmod).
 
 ### Beginning with zram
 
@@ -50,19 +52,23 @@ Make sure you are using a kernel that includes the zram module.
 
 ## Reference
 
-This module accepts the following parameters:
+The `zram` class accepts the following parameters:
 
 * `numdevices`
 Number of zram devices.  Defaults to the number of processors
-($::processorcount).
+(`$facts['processorcount']`).
 
 * `disksize`
-Size of zram devices.  Defaults to half of memory divided by numdevices.
+Size of zram devices.  Defaults to half of memory divided by `numdevices`.
+
+See [`REFERENCE.md`](REFERENCE.md) for more details.
 
 ## Limitations
 
-This module has been tested on Ubuntu 16.04 and Debian Jessie (Raspbian).
+This module has been tested on a number of systems.  (See
+[`metadata.json`](metadata.json) for a full list.)  It *should* work on any
+Linux distribution that includes the zram kernel module.
 
 ## Development
 
-Send me a pull request on GitHub.
+Send me a pull request on [GitHub](https://github.com/silug/puppet-zram).

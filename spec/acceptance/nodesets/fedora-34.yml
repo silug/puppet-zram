@@ -1,11 +1,11 @@
 ---
 HOSTS:
-  debian-10-x64:
-    platform: debian-10-x86_64
+  fedora-34-x64:
+    platform: fedora-34-x86_64
     roles:
       - agent
     hypervisor: vagrant
-    box: debian/buster64
+    box: fedora/34-cloud-base
 CONFIG:
   type: aio
   puppet_collection: puppet7

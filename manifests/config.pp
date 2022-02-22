@@ -1,9 +1,9 @@
 # zram::config
 #
-# Configuration for the zram module.  This can
-# only be called from the main zram class.
+# Configuration for the `zram` module.  This can
+# only be called from the main `zram` class.
 #
-# @summary Configuration for the zram module
+# @summary Configuration for the `zram` module
 #
 # @example
 #   include zram::config
