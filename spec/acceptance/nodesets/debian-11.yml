@@ -1,11 +1,11 @@
 ---
 HOSTS:
-  debian-10-x64:
-    platform: debian-10-x86_64
+  debian-11-x64:
+    platform: debian-11-x86_64
     roles:
       - agent
     hypervisor: vagrant
-    box: debian/buster64
+    box: debian/bullseye64
 CONFIG:
   type: aio
   puppet_collection: puppet7

@@ -5,9 +5,9 @@
 #
 # @summary Configures and loads zram kernel module
 #
-# @param numdevices Number of zram devices.  Defaults to the number of processors ($::processorcount).
+# @param numdevices Number of zram devices.  Defaults to the number of processors (`$facts['processorcount']`).
 #
-# @param disksize Size of zram devices.  Defaults to half of memory divided by numdevices.
+# @param disksize Size of zram devices.  Defaults to half of memory divided by `numdevices`.
 #
 # @example
 #    class { 'zram': }

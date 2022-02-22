@@ -5,9 +5,7 @@ HOSTS:
     roles:
       - agent
     hypervisor: vagrant
-    box: centos/8
-    ip: '172.31.255.108'
-    netmask: '255.255.255.128'
+    box: centos/stream8
 CONFIG:
   type: aio
-  puppet_collection: puppet6
+  puppet_collection: puppet7

@@ -9,10 +9,17 @@ Gemfile:
       - gem: beaker-vagrant
       - gem: vagrant-wrapper
       - gem: net-ssh
-        version: '~> 5.2'
+        version: '>= 6'
+      - gem: 'ed25519'
+      - gem: 'x25519'
+        version: '1.0.8'
+      - gem: 'bcrypt_pbkdf'
 .gitignore:
   paths:
     - /update_report.txt
+.pdkignore:
+  paths:
+    - /.github/
 spec/spec_helper.rb:
   spec_overrides: |-
     # Add coverage report.
@@ -27,7 +34,7 @@ spec/spec_helper.rb:
       2.5.7:
         tags:
           - docker
-      2.4.5:
+      2.7.2:
         tags:
           - docker
     # Due to bugs in the PDK template, the following:
@@ -50,3 +57,7 @@ spec/spec_helper.rb:
           - bundle exec rake beaker
         tags:
           - beaker
+.travis.yml:
+  delete: true
+appveyor.yml:
+  delete: true
