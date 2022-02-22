@@ -17,6 +17,9 @@ Gemfile:
 .gitignore:
   paths:
     - /update_report.txt
+.pdkignore:
+  paths:
+    - /.github/
 spec/spec_helper.rb:
   spec_overrides: |-
     # Add coverage report.
