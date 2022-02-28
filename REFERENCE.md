@@ -8,6 +8,7 @@
 
 * [`zram`](#zram): Configures and loads zram kernel module
 * [`zram::config`](#zramconfig): Configuration for the `zram` module
+* [`zram::install`](#zraminstall): Add or remove packages to enable zram management
 * [`zram::load`](#zramload): Loads the zram kernel module
 
 ### Tasks
@@ -28,7 +29,7 @@ units needed).
 ##### 
 
 ```puppet
-class { 'zram': }
+include zram
 ```
 
 #### Parameters
@@ -56,33 +57,64 @@ Default value: `(`
 
 ### <a name="zramconfig"></a>`zram::config`
 
-zram::config
+Configuration for the `zram` module
 
-Configuration for the `zram` module.  This can
-only be called from the main `zram` class.
+### <a name="zraminstall"></a>`zram::install`
 
-#### Examples
+Add or remove packages to enable zram management
 
-##### 
+#### Parameters
 
-```puppet
-include zram::config
-```
+The following parameters are available in the `zram::install` class:
+
+* [`required`](#required)
+* [`conflicts`](#conflicts)
+* [`required_ensure`](#required_ensure)
+* [`conflicts_ensure`](#conflicts_ensure)
+
+##### <a name="required"></a>`required`
+
+Data type: `Variant[
+    Undef,
+    String[1],
+    Array[String[1]]
+  ]`
+
+Packages required for zram to function
+
+Default value: ``undef``
+
+##### <a name="conflicts"></a>`conflicts`
+
+Data type: `Variant[
+    Undef,
+    String[1],
+    Array[String[1]]
+  ]`
+
+Packages that conflict with zram
+
+Default value: ``undef``
+
+##### <a name="required_ensure"></a>`required_ensure`
+
+Data type: `String[1]`
+
+`ensure` attribute of `required` packages
+
+Default value: `'installed'`
+
+##### <a name="conflicts_ensure"></a>`conflicts_ensure`
+
+Data type: `String[1]`
+
+`ensure` attribute of `conflicts` packages
+
+Default value: `'absent'`
 
 ### <a name="zramload"></a>`zram::load`
 
-zram::load
-
-Loads the zram kernel module.  Intended
-to be called from the main `zram` class.
-
-#### Examples
-
-##### 
-
-```puppet
-include zram::load
-```
+Loads the zram kernel module
 
 ## Tasks
 

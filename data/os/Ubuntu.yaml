@@ -1,0 +1,3 @@
+---
+zram::install::required:
+  - "linux-modules-extra-%{facts.kernelrelease}"

@@ -1,12 +1,5 @@
-# zram::config
-#
-# Configuration for the `zram` module.  This can
-# only be called from the main `zram` class.
-#
 # @summary Configuration for the `zram` module
 #
-# @example
-#   include zram::config
 class zram::config {
   assert_private()
 
