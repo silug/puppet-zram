@@ -27,7 +27,14 @@ if [ "$ACTION" = add ] ; then
     delay=1
 
     if type -p systemd-run > /dev/null ; then
-        systemd-run /bin/bash -c "sleep $delay ; /sbin/mkswap $DEVNAME && /sbin/swapon -p 32767 $DEVNAME" || exit 7
+        systemd_run_version=$( systemd-run --version )
+        systemd_run_version="${systemd_run_version#systemd }"
+        systemd_run_version="${systemd_run_version%%[$'\n' ]*}"
+        if [ "$systemd_run_version" -gt 219 ] ; then
+            systemd-run --no-block /bin/bash -c "sleep $delay ; /sbin/mkswap $DEVNAME && /sbin/swapon -p 32767 $DEVNAME" || exit 7
+        else
+            systemd-run /bin/bash -c "sleep $delay ; /sbin/mkswap $DEVNAME && /sbin/swapon -p 32767 $DEVNAME" || exit 7
+        fi
     else
         ( sleep $delay ; /sbin/mkswap "$DEVNAME" && /sbin/swapon -p 32767 "$DEVNAME" ) &
     fi

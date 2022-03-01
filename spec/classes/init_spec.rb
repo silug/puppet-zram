@@ -39,11 +39,18 @@ describe 'zram' do
         )
       end
 
-      it { is_expected.to contain_class('zram::load') }
+      it { is_expected.to contain_class('zram::install') }
 
       if facts[:os]['name'] == 'Ubuntu'
-        it { is_expected.to contain_package("linux-modules-extra-#{facts[:kernelrelease]}") }
+        it { is_expected.to contain_package("linux-modules-extra-#{facts[:kernelrelease]}").with_ensure('installed') }
       end
+
+      if facts[:os]['name'] == 'Fedora'
+        it { is_expected.to contain_package('zram-generator-defaults').with_ensure('absent') }
+        it { is_expected.to contain_package('zram-generator').with_ensure('absent') }
+      end
+
+      it { is_expected.to contain_class('zram::load') }
 
       it { is_expected.to contain_kmod__load('zram') }
     end
