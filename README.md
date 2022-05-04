@@ -1,9 +1,6 @@
 # zram
 
-#### Table of Contents
-
 - [zram](#zram)
-      - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Module Description](#module-description)
   - [Setup](#setup)
