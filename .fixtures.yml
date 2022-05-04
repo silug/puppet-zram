@@ -1,6 +1,6 @@
 ---
 fixtures:
   forge_modules:
-    stdlib: 'puppetlabs/stdlib'
-    kmod: 'camptocamp/kmod'
-    augeas_core: 'puppetlabs/augeas_core'
+    stdlib: puppetlabs-stdlib
+    kmod: puppet-kmod
+    augeas_core: puppetlabs-augeas_core
