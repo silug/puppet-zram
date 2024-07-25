@@ -7,9 +7,9 @@
 ### Classes
 
 * [`zram`](#zram): Configures and loads zram kernel module
-* [`zram::config`](#zramconfig): Configuration for the `zram` module
-* [`zram::install`](#zraminstall): Add or remove packages to enable zram management
-* [`zram::load`](#zramload): Loads the zram kernel module
+* [`zram::config`](#zram--config): Configuration for the `zram` module
+* [`zram::install`](#zram--install): Add or remove packages to enable zram management
+* [`zram::load`](#zram--load): Loads the zram kernel module
 
 ### Tasks
 
@@ -36,30 +36,112 @@ include zram
 
 The following parameters are available in the `zram` class:
 
-* [`numdevices`](#numdevices)
-* [`disksize`](#disksize)
+* [`numdevices`](#-zram--numdevices)
+* [`disksize`](#-zram--disksize)
+* [`ensure`](#-zram--ensure)
+* [`swapoff`](#-zram--swapoff)
+* [`swapoff_timeout`](#-zram--swapoff_timeout)
 
-##### <a name="numdevices"></a>`numdevices`
+##### <a name="-zram--numdevices"></a>`numdevices`
 
 Data type: `Integer`
 
 Number of zram devices.  Defaults to the number of processors (`$facts['processorcount']`).
 
-Default value: `$facts['processorcount']`
+Default value: `$facts['processors']['count']`
 
-##### <a name="disksize"></a>`disksize`
+##### <a name="-zram--disksize"></a>`disksize`
 
 Data type: `Integer`
 
 Size of zram devices.  Defaults to half of memory divided by `numdevices`.
 
-Default value: `(`
+Default value: `(($facts['memory']['system']['total_bytes'] / 2) / $numdevices`
 
-### <a name="zramconfig"></a>`zram::config`
+##### <a name="-zram--ensure"></a>`ensure`
+
+Data type:
+
+```puppet
+Enum[
+    'present',
+    'absent'
+  ]
+```
+
+Set to `absent` to remove zram.
+
+Default value: `'present'`
+
+##### <a name="-zram--swapoff"></a>`swapoff`
+
+Data type: `Boolean`
+
+When `ensure` is `absent`, attempt to disable zram swap before
+unloading the kernel module. Without this set, you will need to
+proactively run `swapoff` on each `/dev/zram*` device or reboot
+following a failed unload attempt.
+
+Default value: `false`
+
+##### <a name="-zram--swapoff_timeout"></a>`swapoff_timeout`
+
+Data type: `Optional[Integer[0]]`
+
+Timeout for the `swapoff` command. (See the
+[`exec` `timeout` attribute documentation](https://www.puppet.com/docs/puppet/latest/types/exec.html#exec-attribute-timeout)
+for details.)
+
+Default value: `undef`
+
+### <a name="zram--config"></a>`zram::config`
 
 Configuration for the `zram` module
 
-### <a name="zraminstall"></a>`zram::install`
+#### Parameters
+
+The following parameters are available in the `zram::config` class:
+
+* [`ensure`](#-zram--config--ensure)
+* [`file_ensure`](#-zram--config--file_ensure)
+
+##### <a name="-zram--config--ensure"></a>`ensure`
+
+Data type:
+
+```puppet
+Enum[
+    'present',
+    'absent'
+  ]
+```
+
+Set to `absent` to remove the configuration
+
+Default value: `$zram::ensure`
+
+##### <a name="-zram--config--file_ensure"></a>`file_ensure`
+
+Data type:
+
+```puppet
+Enum[
+    'file',
+    'absent'
+  ]
+```
+
+Set to `absent` to remove the configuration files
+
+Default value:
+
+```puppet
+$ensure ? {
+    'absent' => 'absent',
+    default  => 'file'
+```
+
+### <a name="zram--install"></a>`zram::install`
 
 Add or remove packages to enable zram management
 
@@ -67,36 +149,45 @@ Add or remove packages to enable zram management
 
 The following parameters are available in the `zram::install` class:
 
-* [`required`](#required)
-* [`conflicts`](#conflicts)
-* [`required_ensure`](#required_ensure)
-* [`conflicts_ensure`](#conflicts_ensure)
+* [`required`](#-zram--install--required)
+* [`conflicts`](#-zram--install--conflicts)
+* [`required_ensure`](#-zram--install--required_ensure)
+* [`conflicts_ensure`](#-zram--install--conflicts_ensure)
+* [`ensure`](#-zram--install--ensure)
 
-##### <a name="required"></a>`required`
+##### <a name="-zram--install--required"></a>`required`
 
-Data type: `Variant[
+Data type:
+
+```puppet
+Variant[
     Undef,
     String[1],
     Array[String[1]]
-  ]`
+  ]
+```
 
 Packages required for zram to function
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="conflicts"></a>`conflicts`
+##### <a name="-zram--install--conflicts"></a>`conflicts`
 
-Data type: `Variant[
+Data type:
+
+```puppet
+Variant[
     Undef,
     String[1],
     Array[String[1]]
-  ]`
+  ]
+```
 
 Packages that conflict with zram
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="required_ensure"></a>`required_ensure`
+##### <a name="-zram--install--required_ensure"></a>`required_ensure`
 
 Data type: `String[1]`
 
@@ -104,7 +195,7 @@ Data type: `String[1]`
 
 Default value: `'installed'`
 
-##### <a name="conflicts_ensure"></a>`conflicts_ensure`
+##### <a name="-zram--install--conflicts_ensure"></a>`conflicts_ensure`
 
 Data type: `String[1]`
 
@@ -112,9 +203,64 @@ Data type: `String[1]`
 
 Default value: `'absent'`
 
-### <a name="zramload"></a>`zram::load`
+##### <a name="-zram--install--ensure"></a>`ensure`
+
+Data type:
+
+```puppet
+Enum[
+    'present',
+    'absent'
+  ]
+```
+
+Set to `absent` to skip package operations
+
+Default value: `$zram::ensure`
+
+### <a name="zram--load"></a>`zram::load`
 
 Loads the zram kernel module
+
+#### Parameters
+
+The following parameters are available in the `zram::load` class:
+
+* [`ensure`](#-zram--load--ensure)
+* [`swapoff`](#-zram--load--swapoff)
+* [`swapoff_timeout`](#-zram--load--swapoff_timeout)
+
+##### <a name="-zram--load--ensure"></a>`ensure`
+
+Data type:
+
+```puppet
+Enum[
+    'present',
+    'absent'
+  ]
+```
+
+Set to `absent` to unload the kernel module
+
+Default value: `$zram::ensure`
+
+##### <a name="-zram--load--swapoff"></a>`swapoff`
+
+Data type: `Boolean`
+
+When `ensure` is `absent`, attempt to disable zram swap before
+unloading the kernel module
+
+Default value: `$zram::swapoff`
+
+##### <a name="-zram--load--swapoff_timeout"></a>`swapoff_timeout`
+
+Data type: `Optional[Integer[0]]`
+
+Timeout for the `swapoff` command
+
+Default value: `$zram::swapoff_timeout`
 
 ## Tasks
 

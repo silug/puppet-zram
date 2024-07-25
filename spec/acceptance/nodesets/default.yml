@@ -1,12 +1,12 @@
 ---
 HOSTS:
-  centos-7-x64:
-    platform: el-7-x86_64
+  centos-9-x64:
+    platform: el-9-x86_64
     roles:
       - agent
       - default
-    hypervisor: vagrant
-    box: centos/7
+    hypervisor: <%= ENV.fetch('BEAKER_HYPERVISOR', 'vagrant') %>
+    box: generic/centos9s
 CONFIG:
   type: aio
-  puppet_collection: puppet7
+  puppet_collection: <%= ENV.fetch('BEAKER_PUPPET_COLLECTION', 'puppet8') %>

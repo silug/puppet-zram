@@ -1,0 +1,9 @@
+---
+extends: default
+rules:
+  line-length:
+    max: 160
+ignore: |
+  /spec/fixtures/
+  /.rubocop.yml
+  /vendor/

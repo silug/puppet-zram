@@ -4,8 +4,8 @@ HOSTS:
     platform: debian-11-x86_64
     roles:
       - agent
-    hypervisor: vagrant
+    hypervisor: <%= ENV.fetch('BEAKER_HYPERVISOR', 'vagrant') %>
     box: debian/bullseye64
 CONFIG:
   type: aio
-  puppet_collection: puppet7
+  puppet_collection: <%= ENV.fetch('BEAKER_PUPPET_COLLECTION', 'puppet8') %>
