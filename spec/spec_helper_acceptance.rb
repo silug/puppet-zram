@@ -5,11 +5,9 @@ require 'beaker/module_install_helper'
 
 # Hack to get around Puppet not being available for all versions of Fedora
 ok_hosts = hosts.reject do |host|
-  begin
-    on(host, 'type -p puppet')
-  rescue
-    false
-  end
+  on(host, 'type -p puppet')
+rescue
+  false
 end
 
 run_puppet_install_helper_on(ok_hosts) unless ok_hosts.empty?

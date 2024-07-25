@@ -1,6 +1,6 @@
 {
   "name": "silug-zram",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "author": "Steven Pritchard",
   "summary": "Configures and loads zram kernel module",
   "license": "Apache-2.0",
@@ -10,11 +10,11 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 4.25.0 < 9.0.0"
+      "version_requirement": ">= 4.25.0 < 10.0.0"
     },
     {
       "name": "puppet-kmod",
-      "version_requirement": ">= 2.1.0 < 4.0.0"
+      "version_requirement": ">= 2.1.0 < 5.0.0"
     },
     {
       "name": "puppetlabs-augeas_core",
@@ -25,29 +25,35 @@
     {
       "operatingsystem": "Fedora",
       "operatingsystemrelease": [
-        "34",
-        "35",
-        "36"
+        "39",
+        "40"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "7",
-        "8"
+        "8",
+        "9"
       ]
     },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "7",
-        "8"
+        "9"
       ]
     },
     {
       "operatingsystem": "Rocky",
       "operatingsystemrelease": [
-        "8"
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "AlmaLinux",
+      "operatingsystemrelease": [
+        "8",
+        "9"
       ]
     },
     {
@@ -59,30 +65,29 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "9",
-        "10",
-        "11"
+        "11",
+        "12"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "16.04",
-        "18.04",
-        "20.04"
+        "20.04",
+        "22.04",
+        "24.04"
       ]
     }
   ],
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.10.1 < 8.0.0"
+      "version_requirement": ">= 7.0.0 < 9.0.0"
     }
   ],
   "tags": [
     "zram"
   ],
-  "pdk-version": "2.4.0",
-  "template-url": "pdk-default#2.4.0",
-  "template-ref": "tags/2.4.0-0-gfa6b6d2"
+  "pdk-version": "3.2.0",
+  "template-url": "pdk-default#3.2.0",
+  "template-ref": "tags/3.2.0-0-gb257ef1"
 }

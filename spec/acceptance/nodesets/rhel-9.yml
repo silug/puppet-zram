@@ -1,11 +1,11 @@
 ---
 HOSTS:
-  ubuntu-20.04-x64:
-    platform: ubuntu-20.04-x86_64
+  rhel-9-x64:
+    platform: el-9-x86_64
     roles:
       - agent
     hypervisor: <%= ENV.fetch('BEAKER_HYPERVISOR', 'vagrant') %>
-    box: ubuntu/focal64
+    box: generic/rhel9
 CONFIG:
   type: aio
   puppet_collection: <%= ENV.fetch('BEAKER_PUPPET_COLLECTION', 'puppet8') %>

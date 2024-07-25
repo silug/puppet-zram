@@ -4,8 +4,8 @@ HOSTS:
     platform: el-7-x86_64
     roles:
       - agent
-    hypervisor: vagrant
+    hypervisor: <%= ENV.fetch('BEAKER_HYPERVISOR', 'vagrant') %>
     box: bento/amazonlinux-2
 CONFIG:
   type: aio
-  puppet_collection: puppet7
+  puppet_collection: <%= ENV.fetch('BEAKER_PUPPET_COLLECTION', 'puppet8') %>

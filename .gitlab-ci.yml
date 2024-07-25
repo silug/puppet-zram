@@ -20,55 +20,36 @@ default:
     - bundle -v
     - bundle install --without system_tests --path vendor/bundle --jobs $(nproc)
 
-validate lint check rubocop-Ruby 2.5.7-Puppet ~> 6:
+validate lint check rubocop:
   stage: syntax
-  image: ruby:2.5.7
+  image: $RUBY_IMAGE
   script:
     - bundle exec rake validate lint check rubocop
-  variables:
-    PUPPET_GEM_VERSION: '~> 6'
-  tags:
-    - docker
+  parallel:
+    matrix:
+      - RUBY_IMAGE: docker.io/library/ruby:2.7
+        PUPPET_GEM_VERSION: "~> 7"
+      - RUBY_IMAGE: docker.io/library/ruby:3.2
+        PUPPET_GEM_VERSION: "~> 8"
 
-parallel_spec-Ruby 2.5.7-Puppet ~> 6:
+parallel_spec:
   stage: unit
-  image: ruby:2.5.7
+  image: $RUBY_IMAGE
   script:
     - bundle exec rake parallel_spec
-  variables:
-    PUPPET_GEM_VERSION: '~> 6'
-  tags:
-    - docker
+  parallel:
+    matrix:
+      - RUBY_IMAGE: docker.io/library/ruby:2.7
+        PUPPET_GEM_VERSION: "~> 7"
+      - RUBY_IMAGE: docker.io/library/ruby:3.2
+        PUPPET_GEM_VERSION: "~> 8"
 
-validate lint check rubocop-Ruby 2.7.2-Puppet ~> 7:
+yamllint:
   stage: syntax
-  image: ruby:2.7.2
+  image: python:3-alpine
   script:
-    - bundle exec rake validate lint check rubocop
-  variables:
-    PUPPET_GEM_VERSION: '~> 7'
-  tags:
-    - docker
-
-parallel_spec-Ruby 2.7.2-Puppet ~> 7:
-  stage: unit
-  image: ruby:2.7.2
-  script:
-    - bundle exec rake parallel_spec
-  variables:
-    PUPPET_GEM_VERSION: '~> 7'
-  tags:
-    - docker
-
-beaker:
-  stage: beaker
-  variables:
-    DOCKER_DRIVER: overlay2
-  services:
-  - docker:dind
-  script:
-  - bundle install --with system_tests
-  - bundle exec rake beaker
-  tags:
-  - beaker
-
+    - pip install 'yamllint>=1,<2'
+    - yamllint .
+  before_script: []
+  cache:
+    paths: []

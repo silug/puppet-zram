@@ -1,11 +1,11 @@
 ---
 HOSTS:
-  ubuntu-20.04-x64:
-    platform: ubuntu-20.04-x86_64
+  debian-12-x64:
+    platform: debian-12-x86_64
     roles:
       - agent
     hypervisor: <%= ENV.fetch('BEAKER_HYPERVISOR', 'vagrant') %>
-    box: ubuntu/focal64
+    box: debian/bookworm64
 CONFIG:
   type: aio
   puppet_collection: <%= ENV.fetch('BEAKER_PUPPET_COLLECTION', 'puppet8') %>

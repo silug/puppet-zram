@@ -4,6 +4,7 @@
 # @param conflicts Packages that conflict with zram
 # @param required_ensure `ensure` attribute of `required` packages
 # @param conflicts_ensure `ensure` attribute of `conflicts` packages
+# @param ensure Set to `absent` to skip package operations
 #
 class zram::install (
   Variant[
@@ -18,18 +19,24 @@ class zram::install (
   ]                  $conflicts        = undef,
   String[1]          $required_ensure  = 'installed',
   String[1]          $conflicts_ensure = 'absent',
+  Enum[
+    'present',
+    'absent'
+  ]                  $ensure           = $zram::ensure,
 ) {
   assert_private()
 
-  if $required {
-    package { $required:
-      ensure => $required_ensure,
+  if $ensure == 'present' {
+    if $required {
+      package { $required:
+        ensure => $required_ensure,
+      }
     }
-  }
 
-  if $conflicts {
-    package { $conflicts:
-      ensure => $conflicts_ensure,
+    if $conflicts {
+      package { $conflicts:
+        ensure => $conflicts_ensure,
+      }
     }
   }
 }
